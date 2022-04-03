@@ -32,6 +32,6 @@ public class River {
         Length=value;
     }
     public String ToString(){
-        return Name+"\t\t"+Dislocation+"\t\t"+Length;
+        return getName()+"\t\t"+getDislocation()+"\t\t"+getLength();
     }
 }

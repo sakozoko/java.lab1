@@ -46,7 +46,7 @@ public class RiverCollection implements Iterable<River> {
     //sums the lengths in the collection
     private double sumLength(){
         double sum=0;
-        for (River river : _rivers) {
+        for (River river : this) {
             sum+=river.getLength();
         }
         return sum;
@@ -54,19 +54,25 @@ public class RiverCollection implements Iterable<River> {
     // returns rivers whose length is longest that the average length in the collection
     public RiverCollection getLengthGreaterAvgRivers(){
         ArrayList<River> temp = new ArrayList<>();
-        for (River river : _rivers) {
+        for (River river : this) {
             if(river.getLength()>avgLength())
                 temp.add(river);
         }
         return new RiverCollection(temp);
     }
     //sorting by input comparator. you can implement comparator to compare by name or length or dislocation
-    public void sort(Comparator<River> comparer){
-        _rivers.sort(comparer);
+    public void sort(Comparator<River> comparator){
+        _rivers.sort(comparator);
     }
+    //sorting by name
+    public void sort()
+    {
+        _rivers.sort(new ComparatorByName());
+    }
+
     //searching in collection by input name. return result or null
     public River findByName(String sname){
-        for (River river : _rivers) {
+        for (River river : this) {
             if(river.getName().equalsIgnoreCase(sname))
                 return river;
         }
@@ -77,5 +83,11 @@ public class RiverCollection implements Iterable<River> {
     @Override
     public Iterator<River> iterator() {
         return _rivers.iterator();
+    }
+    private static class ComparatorByName implements Comparator<River> {
+        @Override
+        public int compare(River o1, River o2) {
+            return o1.getName().compareTo(o2.getName());
+        }
     }
 }

@@ -1,7 +1,5 @@
 package com.company;
 
-import java.util.Arrays;
-
 public class Main {
     ////method is needed to automatically seed the collection
     private static void seedCollection(RiverCollection rivers)
@@ -52,7 +50,7 @@ public class Main {
         System.out.println("---------------Third before sort------------------");
         ViewInfo(rivers);
         System.out.println("---------------Third after sort------------------");
-        rivers.sort(new ComparatorByName());
+        rivers.sort();
         ViewInfo(rivers);
     }
     ////contains fourth task
