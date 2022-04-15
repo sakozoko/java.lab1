@@ -1,6 +1,6 @@
 package com.company;
 //River class
-public class River {
+public class River implements IWater {
     //private fields for river
     private String Name;
     private final String Dislocation;
@@ -12,7 +12,7 @@ public class River {
         Dislocation=dislocation;
         Length=length;
     }
-    //encapsulation fields
+
     public String getName() {
         return Name;
     }
